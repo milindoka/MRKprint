@@ -90,14 +90,11 @@ import javax.swing.JRadioButton;
         	                              }
         	 else frame.setTitle("MRKprint : No Marklists to print !");
         	 Reminder Re=new Reminder(10);
-        	 
-        	 
-        	 
         }
         
 
     	public static  void LoadPreferences()
-    	{Preferences prefs = Preferences.userNodeForPackage(in.siws.MRKprint.SetPrinter.class);
+    	{Preferences prefs = Preferences.userNodeForPackage(in.siws.MRKprint.MRKprint.class);
 
     	// Preference key name
     	final String PREF_NAME = "MRKprinterPref";
@@ -106,7 +103,7 @@ import javax.swing.JRadioButton;
     	}
     	
         public static void SavePreferences()
-    	{Preferences prefs = Preferences.userNodeForPackage(in.siws.MRKprint.SetPrinter.class);
+    	{Preferences prefs = Preferences.userNodeForPackage(in.siws.MRKprint.MRKprint.class);
 
     	// Preference key name
     	final String PREF_NAME = "MRKprinterPref";
