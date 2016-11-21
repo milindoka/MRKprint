@@ -159,14 +159,14 @@ public class PrintMarklist implements Printable
 	        }
 		 
 		 
-		 Font MyFont = new Font("Liberation Serif", Font.PLAIN,9);
+		 Font MyFont = new Font("Liberation Serif", Font.PLAIN,10);
 		 pg.setFont(MyFont); 
          
 		 ReadFromDisk(fileArray.get(pageno));
 		 Fillrollmarks();
 		 
 		 
-         int tlx=70,tly=100,cellheight=16,cellwidth=60,colcount=10;//,rowcount=31;
+         int tlx=70,tly=100,cellheight=16,cellwidth=64,colcount=10;//,rowcount=31;
        //  int celltextshiftx=5,celltextshifty=12;
 
          
@@ -285,8 +285,12 @@ public class PrintMarklist implements Printable
 		
 		
 		 int rc=rollArray.size();
+		 
 	     int cc=2;  
-	     int Sections=4;
+	     int Sections=rc/40;
+	     int remainder=rc%40;
+	     if(remainder>0)Sections++;
+	     
 	     //if(cc==4) Sections=4;
 	     int RollsPerSection=40;
 	     
@@ -338,7 +342,7 @@ public class PrintMarklist implements Printable
 	     }
 	     String pt=String.format("Page Total : %d", pagetotal);
 	     gr.drawString(pt,px, py+700);
-	     RightJustify("Examiner's Sign : ____________",px+500, py+700,gr);
+	     RightJustify("Examiner's Sign : ____________",px+492, py+700,gr);
 	     
 	 }
 	    
