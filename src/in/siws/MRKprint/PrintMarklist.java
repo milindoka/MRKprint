@@ -83,8 +83,9 @@ public class PrintMarklist implements Printable
     	BufferedReader reader=null;
 		try {
 			reader = new BufferedReader(new FileReader(fnem));
-		} catch (FileNotFoundException e1) {
-			// TODO Auto-generated catch block
+		} catch (FileNotFoundException e1) 
+		{
+		
 			e1.printStackTrace();
 		}
  				
@@ -147,12 +148,22 @@ public class PrintMarklist implements Printable
               
 	         }
 	
+	  public void PrintHeader(Graphics pg,int px,int py)
+	  {Centre(CollegeName1,450,px,py,pg);
+	  pg.drawString("Class & Div : "+Clas+" "+Division,px, py+17);
+	  pg.drawString("Subject :"+Subject,px+200, py+17);
+	  pg.drawString("Examiner : "+(Examiner.length()>9 ? Examiner.substring(0, 8) : Examiner),px+400,py+17);
+      pg.drawString("Examination : "+Examination,px, py+34);
+      pg.drawString("Total Marks : "+MaxMarks,px+200,py+34);
+      pg.drawString("Date : "+Date,px+400, py+34);
+		  
+	  }
+	  
+	  
 	public int print(Graphics pg, PageFormat pf, int pageno)
 			throws PrinterException
 	{
-		//int tlx=(int) pf.getImageableX()+10,tly=(int) pf.getImageableY()+10;
 		
-		//int w=(int) pf.getImageableWidth()-20,h=(int)pf.getImageableHeight()-20;
 		
 		 if (pageno>TotalMarklists-1)             // We have only one page, and 'page no' is zero-based
 		    {  return NO_SUCH_PAGE;  // After NO_SUCH_PAGE, printer will stop printing.
@@ -166,20 +177,11 @@ public class PrintMarklist implements Printable
 		 Fillrollmarks();
 		 
 		 
-         int tlx=70,tly=100,cellheight=16,cellwidth=64,colcount=10;//,rowcount=31;
-       //  int celltextshiftx=5,celltextshifty=12;
-
-         
-         Centre(CollegeName1,450,tlx,tly-72,pg);
-         pg.drawString("Class & Div : "+Clas+" "+Division,tlx, tly-38);
-         pg.drawString("Examination : "+Examination,tlx, tly-24);
-         pg.drawString("Subject :"+Subject,tlx+200, tly-38);
-         pg.drawString("Total Marks : "+MaxMarks,tlx+200, tly-24);
+         int tlx=70,tly=28,cellheight=15,cellwidth=64;
+               
+         PrintHeader(pg,tlx,tly);
         
-         pg.drawString("Examiner : "+(Examiner.length()>9 ? Examiner.substring(0, 8) : Examiner),tlx+400, tly-38);
-         pg.drawString("Date : "+Date,tlx+400, tly-24);
-         
-         PrintGrid(tlx,tly,cellheight,cellwidth,10,5,pg);   
+         PrintGrid(tlx,tly+48,cellheight,cellwidth,10,5,pg);   
          CurrentMarklist++;
 		return PAGE_EXISTS;
 	 }
@@ -297,7 +299,7 @@ public class PrintMarklist implements Printable
 	     int Gap=5; 
 	     int MrkCellWidth=30;
 	     //int celltextshiftx=5,
-	     int celltextshifty=12;
+	     int celltextshifty=11;
 		 int rollindex=0;
 		 String tempmark1="";
 		 long pagetotal=0;
@@ -341,8 +343,8 @@ public class PrintMarklist implements Printable
 
 	     }
 	     String pt=String.format("Page Total : %d", pagetotal);
-	     gr.drawString(pt,px, py+700);
-	     RightJustify("Examiner's Sign : ____________",px+492, py+700,gr);
+	     gr.drawString(pt,px, py+680);
+	     RightJustify("Examiner's Sign : ____________",px+492, py+680,gr);
 	     
 	 }
 	    
