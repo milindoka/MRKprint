@@ -89,7 +89,7 @@ import javax.swing.JRadioButton;
         	                               frame.setTitle(DisplayMessage);
         	                              }
         	 else frame.setTitle("MRKprint : No Marklists to print !");
-        	 Reminder Re=new Reminder(10);
+        	// Reminder Re=new Reminder(10);
         }
         
 
