@@ -178,6 +178,8 @@ public class MRKprint extends JFrame {
     	String path = dir.toString();
 
     	listfiles(path);   ///collect all mrk filenames with path in file array
+    	String frametitle=String.format("Total Marklists : %d", TotalMarklists);
+    	setTitle(frametitle);
      //   show(path);
         
     }
