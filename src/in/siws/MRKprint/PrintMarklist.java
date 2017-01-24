@@ -1,8 +1,11 @@
 package in.siws.MRKprint;
+
 import javax.print.PrintService;
 import javax.print.PrintServiceLookup;
 import javax.print.attribute.HashPrintRequestAttributeSet;
 import javax.print.attribute.standard.MediaPrintableArea;
+import javax.swing.JOptionPane;
+
 import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.print.PageFormat;
@@ -23,6 +26,7 @@ public class PrintMarklist implements Printable
 	public  ArrayList<String> strArray = new ArrayList<String>();
 	public  ArrayList<String> rollArray = new ArrayList<String>();
 	public  ArrayList<String> markArray = new ArrayList<String>();
+	
 	
 	
 	int TotalMarklists=0;
@@ -50,7 +54,14 @@ public class PrintMarklist implements Printable
 	String[] Set = new String[100];
 	String[] Key = new String[100];
 	
+	  public void show(String msg) ///for debugging
+		{JOptionPane.showMessageDialog(null, msg);}
+	    
 	
+    public void printSelected(ArrayList <String> Array)
+    {
+    	 for(int x = 0; x <Array.size() ; x++) show(Array.get(x));
+    }
 	
 	int listfiles(String path)
     { 
@@ -110,7 +121,7 @@ public class PrintMarklist implements Printable
 	  public void PrintAllMarklists(String printername)
               {
 		  
-			 
+		  TotalMarklists=fileArray.size();
 		  PrintService ps = findPrintService(printername);
 		  if(ps==null) ps = PrintServiceLookup.lookupDefaultPrintService(); 
 		  if(ps==null) return;
