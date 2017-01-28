@@ -5,6 +5,7 @@ import java.awt.BorderLayout;
 import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
+import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.ItemEvent;
@@ -67,7 +68,7 @@ public class MRKprint extends JFrame {
              };
         
         LoadPreferences();
-        prname.setText(PrinterName);
+        prname.setText("  "+PrinterName);
         DefaultTableModel model = new DefaultTableModel(data, columnNames);
         table = new JTable(model) {
 
@@ -105,7 +106,7 @@ public class MRKprint extends JFrame {
         tc.setCellRenderer(table.getDefaultRenderer(Boolean.class));
         tc.setHeaderRenderer(new CheckBoxHeader(new MyItemListener()));
 
-        
+        JButton browseButton=new JButton("Browse");
         
         JButton printButton=new JButton("Print");
         printButton.addActionListener(new ActionListener() 
@@ -143,7 +144,7 @@ public class MRKprint extends JFrame {
              SetPrinter sp=new SetPrinter();
              PrinterName=sp.SelectPrinter();
              
-              prname.setText(PrinterName);
+              prname.setText("  "+PrinterName);
               SavePreferences();
           //  Dimension d = label.getPreferredSize();
             
@@ -156,9 +157,9 @@ public class MRKprint extends JFrame {
         
         
         JPanel TopPanel = new JPanel();
-        TopPanel.setLayout(new FlowLayout());
+        TopPanel.setLayout(new GridLayout(2,3));
         TopPanel.setSize(50,50);
-        
+        TopPanel.add(browseButton);
         TopPanel.add(printButton);
         TopPanel.add(setPrinterButton);
         TopPanel.add(prname);
