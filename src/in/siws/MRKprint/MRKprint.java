@@ -20,6 +20,7 @@ import java.util.prefs.Preferences;
 import javax.swing.AbstractButton;
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
+import javax.swing.JFileChooser;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
@@ -107,6 +108,26 @@ public class MRKprint extends JFrame {
         tc.setHeaderRenderer(new CheckBoxHeader(new MyItemListener()));
 
         JButton browseButton=new JButton("Browse");
+        browseButton.addActionListener(new ActionListener() 
+        {
+            public void actionPerformed(ActionEvent arg0) 
+            {
+                JFileChooser fc = new JFileChooser();
+                fc.setCurrentDirectory(new java.io.File(".")); // start at application current directory
+                fc.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
+                int returnVal = fc.showOpenDialog(getContentPane());
+                if(returnVal == JFileChooser.APPROVE_OPTION) {
+                    File yourFolder = fc.getSelectedFile();
+                }
+                
+             
+               
+            }
+        });
+
+        
+        
+        
         
         JButton printButton=new JButton("Print");
         printButton.addActionListener(new ActionListener() 
